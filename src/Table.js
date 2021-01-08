@@ -3,25 +3,32 @@ const TableHead = () => (
     <tr>
       <th>Name</th>
       <th>Job</th>
+      <th>Remove</th>
     </tr>
   </thead>
 );
 
-const TableBody = (props) => {
-  const rows = props.characterData.map((c, i) => (
+const TableBody = props => {
+  const rows = props.characterData.map((character, i) => (
     <tr key={i}>
-      <td>{c.name}</td>
-      <td>{c.job}</td>
+      <td>{character.name}</td>
+      <td>{character.job}</td>
+      <td>
+        <button onClick={() => props.removeCharacter(i)}>Delete</button>
+      </td>
     </tr>
   ));
 
   return <tbody>{ rows }</tbody>;
 };
 
-const Table = (props) => (
+const Table = props => (
   <table>
     <TableHead />
-    <TableBody characterData={props.characterData} />
+    <TableBody
+      characterData={props.characterData}
+      removeCharacter={props.removeCharacter}
+    />
   </table>
 );
 
