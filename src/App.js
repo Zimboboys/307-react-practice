@@ -17,6 +17,7 @@ const App = () => {
 
   return (
     <div className="container">
+      <h1>Job Directory</h1>
       <Table characterData={characters} removeCharacter={removeCharacter} />
       <Form addCharacter={addCharacter} />
     </div>
