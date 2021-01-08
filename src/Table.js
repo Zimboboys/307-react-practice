@@ -1,8 +1,10 @@
+import styles from './Table.module.css';
+
 const TableHead = () => (
   <thead>
     <tr>
-      <th>Name</th>
-      <th>Job</th>
+      <th width="35%">Name</th>
+      <th width="20%">Job</th>
       <th>Remove</th>
     </tr>
   </thead>
@@ -10,7 +12,7 @@ const TableHead = () => (
 
 const TableBody = props => {
   const rows = props.characterData.map((character, i) => (
-    <tr key={i}>
+    <tr key={i} className={styles.character}>
       <td>{character.name}</td>
       <td>{character.job}</td>
       <td>

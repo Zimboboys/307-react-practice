@@ -1,0 +1,11 @@
+th {
+  text-align: center;
+}
+
+tbody tr:hover {
+  background-color: #FAFAFA;
+}
+
+tbody td:last-child {
+  text-align: right;
+}
