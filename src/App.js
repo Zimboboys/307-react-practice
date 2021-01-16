@@ -37,10 +37,14 @@ const App = () => {
     });
   };
 
-  const removeCharacter = index => {
-    updateCharacters(
-      characters.filter((c, i) => i !== index)
-    );
+  const removeCharacter = id => {
+    fetch(`http://localhost:5000/users/${id}`, {
+      method: 'DELETE'
+    })
+    .then(res => res.json())
+    .then(data => {
+      if (data.success) updateCharacters(characters.filter(c => c.id !== id));
+    });
   };
 
   return (

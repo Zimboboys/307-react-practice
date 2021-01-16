@@ -11,12 +11,12 @@ const TableHead = () => (
 );
 
 const TableBody = props => {
-  const rows = props.characterData.map((character, i) => (
-    <tr key={i} className={styles.character}>
+  const rows = props.characterData.map(character => (
+    <tr key={character.id} className={styles.character}>
       <td>{character.name}</td>
       <td>{character.job}</td>
       <td>
-        <button onClick={() => props.removeCharacter(i)}>Delete</button>
+        <button onClick={() => props.removeCharacter(character.id)}>Delete</button>
       </td>
     </tr>
   ));
