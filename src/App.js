@@ -44,7 +44,8 @@ const App = () => {
     .then(res => res.json())
     .then(data => {
       if (data.success) updateCharacters(characters.filter(c => c.id !== id));
-    });
+    })
+    .catch(err => console.error(err));
   };
 
   return (
