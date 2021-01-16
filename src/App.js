@@ -20,8 +20,9 @@ const App = () => {
         },
         body: JSON.stringify(character)
       })
-      .then(res => {
-        return res.status === 201;
+      .then(res => res.json())
+      .then(data => {
+        return data;
       })
       .catch(err => {
         console.error(err);
@@ -31,8 +32,8 @@ const App = () => {
 
   const addCharacter = character => {
     postCharacter(character)
-    .then(status => {
-      if (status) updateCharacters([...characters, character]);
+    .then(res => {
+      if (res.success) updateCharacters([...characters, res.newCharacter]);
     });
   };
 
