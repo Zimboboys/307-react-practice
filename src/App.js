@@ -41,9 +41,9 @@ const App = () => {
     fetch(`http://localhost:5000/users/${id}`, {
       method: 'DELETE'
     })
-    .then(res => res.json())
-    .then(data => {
-      if (data.success) updateCharacters(characters.filter(c => c.id !== id));
+    .then(res => {
+      console.log(res)
+      if (res.status === 204) updateCharacters(characters.filter(c => c.id !== id));
     })
     .catch(err => console.error(err));
   };
