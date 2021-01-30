@@ -5,12 +5,18 @@ import Form from './Form';
 const App = () => {
   const [characters, updateCharacters] = useState([]);
 
+  let pathname = ''
+  if (window.location.search)
+    pathname = window.location.search;
+  else if (window.location.pathname)
+    pathname = window.location.pathname;
+
   useEffect(() => {
-    fetch('http://localhost:5000/users')
+    fetch(`http://localhost:5000/users${pathname}`)
       .then(res => res.json())
       .then(data => updateCharacters(data.users_list))
     .catch(err => console.error(err));
-  }, []);
+  }, [pathname]);
 
   const postCharacter = character => {
     return fetch('http://localhost:5000/users/', {
@@ -42,8 +48,7 @@ const App = () => {
       method: 'DELETE'
     })
     .then(res => {
-      console.log(res)
-      if (res.status === 204) updateCharacters(characters.filter(c => c.id !== id));
+      if (res.status === 204) updateCharacters(characters.filter(c => c._id !== id));
     })
     .catch(err => console.error(err));
   };
